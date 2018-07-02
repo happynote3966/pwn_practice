@@ -161,26 +161,6 @@ int main(void){
 	printf("%s\n\n==============================\n",rbp-0x80);
 	return 0;
 }
-  4006a1:	push   rbp
-  4006a2:	mov    rbp,rsp
-  4006a5:	add    rsp,0xffffffffffffff80
-  4006b8:	lea    rax,[rbp-0x80]
-  4006bc:	mov    rdi,rax
-  4006bf:	mov    eax,0x0
-  4006c4:	call   400570 <gets@plt>
-  4006c9:	mov    edi,0x4007a0
-  4006ce:	call   400520 <puts@plt>
-  4006d3:	mov    edi,0x4007c1
-  4006d8:	call   400540 <system@plt>
-  4006dd:	lea    rax,[rbp-0x80]
-  4006e1:	mov    rsi,rax
-  4006e4:	mov    edi,0x4007c8
-  4006e9:	mov    eax,0x0
-  4006ee:	call   400550 <printf@plt>
-  4006f3:	mov    eax,0x0
-  4006f8:	leave  
-  4006f9:	ret    
-  4006fa:	nop    WORD PTR [rax+rax*1+0x0]
 
 0000000000400700 <__libc_csu_init>:
   400700:	push   r15
