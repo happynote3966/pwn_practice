@@ -224,80 +224,28 @@ Disassembly of section .text:
      abf:	ret    
 
 00000ac0 <init>:
-     ac0:	push   ebp
-     ac1:	mov    ebp,esp
-     ac3:	sub    esp,0x8
-     ac6:	mov    eax,ds:0x0
-     acb:	sub    esp,0x8
-     ace:	push   0x0
-     ad0:	push   eax
-     ad1:	call   ad2 <init+0x12>
-     ad6:	add    esp,0x10
-     ad9:	mov    eax,ds:0x0
-     ade:	sub    esp,0x8
-     ae1:	push   0x0
-     ae3:	push   eax
-     ae4:	call   ae5 <init+0x25>
-     ae9:	add    esp,0x10
-     aec:	mov    eax,ds:0x0
-     af1:	sub    esp,0x8
-     af4:	push   0x0
-     af6:	push   eax
-     af7:	call   af8 <init+0x38>
-     afc:	add    esp,0x10
-     aff:	sub    esp,0x8
-     b02:	push   0xa
-     b04:	push   0x3c
-     b06:	call   b07 <init+0x47>
-     b0b:	add    esp,0x10
-     b0e:	mov    ds:0x304c,eax
-     b13:	nop
-     b14:	leave  
-     b15:	ret    
+	stack := 0x8
+	setbuf(stdin,0x0);
+	setbuf(stdout,0x0);
+	setbuf(stderr,0x0);
+	data_304c = calloc(0x3c,0xa);
+}
 
 00000b16 <fin>:
-     b16:	push   ebp
-     b17:	mov    ebp,esp
-     b19:	sub    esp,0x8
-     b1c:	mov    eax,ds:0x304c
-     b21:	sub    esp,0xc
-     b24:	push   eax
-     b25:	call   b26 <fin+0x10>
-     b2a:	add    esp,0x10
-     b2d:	nop
-     b2e:	leave  
-     b2f:	ret    
+	stack := 0x8
+	free(data_304c);
+	return;
+}
 
 00000b30 <input>:
-     b30:	push   ebp
-     b31:	mov    ebp,esp
-     b33:	sub    esp,0x18
-     b36:	mov    eax,gs:0x14
-     b3c:	mov    DWORD PTR [ebp-0xc],eax
-     b3f:	xor    eax,eax
-     b41:	sub    esp,0xc
-     b44:	push   0x1090
-     b49:	call   b4a <input+0x1a>
-     b4e:	add    esp,0x10
-     b51:	mov    eax,ds:0x0
-     b56:	sub    esp,0x4
-     b59:	push   eax
-     b5a:	push   0x3
-     b5c:	lea    eax,[ebp-0xf]
-     b5f:	push   eax
-     b60:	call   b61 <input+0x31>
-     b65:	add    esp,0x10
-     b68:	sub    esp,0xc
-     b6b:	lea    eax,[ebp-0xf]
-     b6e:	push   eax
-     b6f:	call   b70 <input+0x40>
-     b74:	add    esp,0x10
-     b77:	mov    edx,DWORD PTR [ebp-0xc]
-     b7a:	xor    edx,DWORD PTR gs:0x14
-     b81:	je     b88 <input+0x58>
-     b83:	call   b84 <input+0x54>
-     b88:	leave  
-     b89:	ret    
+	stack := 0x18
+	DWORD canary;//@[ebp-0xc]
+	char buf[3];//@[ebp-0xf]
+	canary = canary();
+	printf(">> ");
+	fgets(buf,0x3,stdin);
+	return atoi(buf);
+}
 
 00000b8a <add>:
 	stack := 0x14
