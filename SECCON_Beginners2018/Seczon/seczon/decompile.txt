@@ -343,110 +343,41 @@ Disassembly of section .text:
      c85:	leave  
      c86:	ret    
 
-00000c87 <comment>:
-     c87:	push   ebp
-     c88:	mov    ebp,esp
-     c8a:	sub    esp,0x38
-     c8d:	mov    eax,gs:0x14
-     c93:	mov    DWORD PTR [ebp-0xc],eax
-     c96:	xor    eax,eax
-     c98:	sub    esp,0xc
-     c9b:	push   0x10b3
-     ca0:	call   ca1 <comment+0x1a>
-     ca5:	add    esp,0x10
-     ca8:	call   b30 <input>
-     cad:	mov    DWORD PTR [ebp-0x34],eax
-     cb0:	cmp    DWORD PTR [ebp-0x34],0x9
-     cb4:	jbe    ccb <comment+0x44>
-     cb6:	sub    esp,0xc
-     cb9:	push   0x10c2
-     cbe:	call   cbf <comment+0x38>
-     cc3:	add    esp,0x10
-     cc6:	jmp    dc1 <comment+0x13a>
-     ccb:	mov    edx,DWORD PTR ds:0x304c
-     cd1:	mov    eax,DWORD PTR [ebp-0x34]
-     cd4:	shl    eax,0x2
-     cd7:	mov    ecx,eax
-     cd9:	shl    ecx,0x4
-     cdc:	sub    ecx,eax
-     cde:	mov    eax,ecx
-     ce0:	add    eax,edx
-     ce2:	mov    eax,DWORD PTR [eax+0x38]
-     ce5:	cmp    eax,0x1
-     ce8:	jne    db1 <comment+0x12a>
-     cee:	sub    esp,0xc
-     cf1:	push   0x10cd
-     cf6:	call   cf7 <comment+0x70>
-     cfb:	add    esp,0x10
-     cfe:	mov    eax,ds:0x0
-     d03:	sub    esp,0x4
-     d06:	push   eax
-     d07:	push   0x23
-     d09:	lea    eax,[ebp-0x2f]
-     d0c:	push   eax
-     d0d:	call   d0e <comment+0x87>
-     d12:	add    esp,0x10
-     d15:	sub    esp,0xc
-     d18:	push   0x10e1
-     d1d:	call   d1e <comment+0x97>
-     d22:	add    esp,0x10
-     d25:	mov    edx,DWORD PTR ds:0x304c
-     d2b:	mov    eax,DWORD PTR [ebp-0x34]
-     d2e:	shl    eax,0x2
-     d31:	mov    ecx,eax
-     d33:	shl    ecx,0x4
-     d36:	sub    ecx,eax
-     d38:	mov    eax,ecx
-     d3a:	add    eax,edx
-     d3c:	sub    esp,0xc
-     d3f:	push   eax
-     d40:	call   d41 <comment+0xba>
-     d45:	add    esp,0x10
-     d48:	sub    esp,0xc
-     d4b:	lea    eax,[ebp-0x2f]
-     d4e:	push   eax
-     d4f:	call   d50 <comment+0xc9>
-     d54:	add    esp,0x10
-     d57:	mov    edx,DWORD PTR ds:0x304c
-     d5d:	mov    eax,DWORD PTR [ebp-0x34]
-     d60:	shl    eax,0x2
-     d63:	mov    ecx,eax
-     d65:	shl    ecx,0x4
-     d68:	sub    ecx,eax
-     d6a:	mov    eax,ecx
-     d6c:	add    eax,edx
-     d6e:	add    eax,0x14
-     d71:	mov    edx,DWORD PTR [ebp-0x2f]
-     d74:	mov    DWORD PTR [eax],edx
-     d76:	mov    edx,DWORD PTR [ebp-0x2b]
-     d79:	mov    DWORD PTR [eax+0x4],edx
-     d7c:	mov    edx,DWORD PTR [ebp-0x27]
-     d7f:	mov    DWORD PTR [eax+0x8],edx
-     d82:	mov    edx,DWORD PTR [ebp-0x23]
-     d85:	mov    DWORD PTR [eax+0xc],edx
-     d88:	mov    edx,DWORD PTR [ebp-0x1f]
-     d8b:	mov    DWORD PTR [eax+0x10],edx
-     d8e:	mov    edx,DWORD PTR [ebp-0x1b]
-     d91:	mov    DWORD PTR [eax+0x14],edx
-     d94:	mov    edx,DWORD PTR [ebp-0x17]
-     d97:	mov    DWORD PTR [eax+0x18],edx
-     d9a:	mov    edx,DWORD PTR [ebp-0x13]
-     d9d:	mov    DWORD PTR [eax+0x1c],edx
-     da0:	movzx  edx,WORD PTR [ebp-0xf]
-     da4:	mov    WORD PTR [eax+0x20],dx
-     da8:	movzx  edx,BYTE PTR [ebp-0xd]
-     dac:	mov    BYTE PTR [eax+0x22],dl
-     daf:	jmp    dc1 <comment+0x13a>
-     db1:	sub    esp,0xc
-     db4:	push   0x10c2
-     db9:	call   dba <comment+0x133>
-     dbe:	add    esp,0x10
-     dc1:	mov    ecx,DWORD PTR [ebp-0xc]
-     dc4:	xor    ecx,DWORD PTR gs:0x14
-     dcb:	je     dd2 <comment+0x14b>
-     dcd:	call   dce <comment+0x147>
-     dd2:	leave  
-     dd3:	ret    
+00000c87 <comment>://TODO checking buf length and data_0000 is what.
+	stack:= 0x38
+	char buf[35];//[ebp-0x2f]
+	DWORD canary;//@[ebp-0xc]
+	DWORD id;//@[ebp-0x34]
+	canary = canary();
+	puts("Choose item ID");
+	id = input();
+	if(id <= 0x9){
+		puts("Invalid ID");
+		return;
+	}
+	if(data_304c[id*60]->0x38 == 0x1){
+		printf("Input a comment\n>> ");
+		fgets(buf,0x23,data_0000)//ds:0x0 = data_0000
+		puts("Confirmation");
+		puts(data_304c[id*60]);
+		printf(buf);//Vuln!!
+		data_304c[id*60]->0x14 = (DWORD)buf;
+		data_304c[id*60]->0x18 = (DWORD)buf[4];
+		data_304c[id*60]->0x1c = (DWORD)buf[8];
+		data_304c[id*60]->0x20 = (DWORD)buf[12];
+		data_304c[id*60]->0x24 = (DWORD)buf[16];
+		data_304c[id*60]->0x28 = (DWORD)buf[20];
+		data_304c[id*60]->0x2c = (DWORD)buf[24];
+		data_304c[id*60]->0x30 = (DWORD)buf[28];
+		data_304c[id*60]->0x34 = (DWORD)buf[32];
+		data_304c[id*60]->0x38 = (WORD)buf[36];
+		data_304c[id*60]->0x3a = (BYTE)buf[39];
+	}else{
+		puts("Invalid ID");
+	}
+	return;
+}
+		
 
 00000dd4 <show>:
      dd4:	push   ebp
