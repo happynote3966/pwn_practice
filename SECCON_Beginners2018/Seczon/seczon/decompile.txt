@@ -380,65 +380,24 @@ Disassembly of section .text:
 		
 
 00000dd4 <show>:
-     dd4:	push   ebp
-     dd5:	mov    ebp,esp
-     dd7:	push   ebx
-     dd8:	sub    esp,0x14
-     ddb:	sub    esp,0xc
-     dde:	push   0x10b3
-     de3:	call   de4 <show+0x10>
-     de8:	add    esp,0x10
-     deb:	call   b30 <input>
-     df0:	mov    DWORD PTR [ebp-0xc],eax
-     df3:	cmp    DWORD PTR [ebp-0xc],0x9
-     df7:	jbe    e0b <show+0x37>
-     df9:	sub    esp,0xc
-     dfc:	push   0x10c2
-     e01:	call   e02 <show+0x2e>
-     e06:	add    esp,0x10
-     e09:	jmp    e7f <show+0xab>
-     e0b:	mov    edx,DWORD PTR ds:0x304c
-     e11:	mov    eax,DWORD PTR [ebp-0xc]
-     e14:	shl    eax,0x2
-     e17:	mov    ecx,eax
-     e19:	shl    ecx,0x4
-     e1c:	sub    ecx,eax
-     e1e:	mov    eax,ecx
-     e20:	add    eax,edx
-     e22:	mov    eax,DWORD PTR [eax+0x38]
-     e25:	cmp    eax,0x1
-     e28:	jne    e6f <show+0x9b>
-     e2a:	mov    edx,DWORD PTR ds:0x304c
-     e30:	mov    eax,DWORD PTR [ebp-0xc]
-     e33:	shl    eax,0x2
-     e36:	mov    ecx,eax
-     e38:	shl    ecx,0x4
-     e3b:	sub    ecx,eax
-     e3d:	mov    eax,ecx
-     e3f:	add    eax,edx
-     e41:	lea    edx,[eax+0x14]
-     e44:	mov    ecx,DWORD PTR ds:0x304c
-     e4a:	mov    eax,DWORD PTR [ebp-0xc]
-     e4d:	shl    eax,0x2
-     e50:	mov    ebx,eax
-     e52:	shl    ebx,0x4
-     e55:	sub    ebx,eax
-     e57:	mov    eax,ebx
-     e59:	add    eax,ecx
-     e5b:	sub    esp,0x4
-     e5e:	push   edx
-     e5f:	push   eax
-     e60:	push   0x10ee
-     e65:	call   e66 <show+0x92>
-     e6a:	add    esp,0x10
-     e6d:	jmp    e7f <show+0xab>
-     e6f:	sub    esp,0xc
-     e72:	push   0x10c2
-     e77:	call   e78 <show+0xa4>
-     e7c:	add    esp,0x10
-     e7f:	mov    ebx,DWORD PTR [ebp-0x4]
-     e82:	leave  
-     e83:	ret    
+	stack := 0x14
+	DWORD item_id;//@[ebp-0xc]
+	puts("Choose item ID");
+	item_id = input();
+	if(item_id > 9){
+		puts("Invalid ID");
+		return;
+	}
+
+	if(data_304c[item_id*60]->0x38 == 0x1){
+		printf("%s\n%s",data_304c[item_id*60],&(data_304c[item_id*60]->0x14)
+	}else{
+		puts("Invalid ID");
+	}
+	
+	return;
+}
+		
 
 00000e84 <del>:
 sub_e84_del(void){
