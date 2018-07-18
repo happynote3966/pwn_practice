@@ -255,93 +255,15 @@ Disassembly of section .text:
 			break;
 		}
 	}
-	if(var1 != 0x10){
-		printf("Input item name");	
-     b8a:	push   ebp
-     b8b:	mov    ebp,esp
-     b8d:	push   ebx
-     b8e:	sub    esp,0x14
-     b91:	mov    DWORD PTR [ebp-0xc],0x0
-     b98:	jmp    bbc <add+0x32>
-   _>b9a:	mov    edx,DWORD PTR ds:0x304c
-     ba0:	mov    eax,DWORD PTR [ebp-0xc]
-     ba3:	shl    eax,0x2
-     ba6:	mov    ecx,eax
-     ba8:	shl    ecx,0x4
-     bab:	sub    ecx,eax
-     bad:	mov    eax,ecx
-     baf:	add    eax,edx
-     bb1:	mov    eax,DWORD PTR [eax+0x38]
-     bb4:	test   eax,eax
-     bb6:	je     bc4 <add+0x3a>
-     bb8:	add    DWORD PTR [ebp-0xc],0x1
-   ^>bbc:	cmp    DWORD PTR [ebp-0xc],0x9
-     bc0:	jle    b9a <add+0x10>
-     bc2:	jmp    bc5 <add+0x3b>
-     bc4:	nop
-     bc5:	cmp    DWORD PTR [ebp-0xc],0xa
-     bc9:	jne    be5 <add+0x5b>
-     bcb:	sub    esp,0xc
-     bce:	push   0x1094
-     bd3:	call   bd4 <add+0x4a>
-     bd8:	add    esp,0x10
-     bdb:	sub    esp,0xc
-     bde:	push   0x0
-     be0:	call   be1 <add+0x57>
-   ^>be5:	sub    esp,0xc
-     be8:	push   0x109f
-     bed:	call   bee <add+0x64>
-     bf2:	add    esp,0x10
-     bf5:	mov    edx,DWORD PTR ds:0x0
-     bfb:	mov    ecx,DWORD PTR ds:0x304c
-     c01:	mov    eax,DWORD PTR [ebp-0xc]
-     c04:	shl    eax,0x2
-     c07:	mov    ebx,eax
-     c09:	shl    ebx,0x4
-     c0c:	sub    ebx,eax
-     c0e:	mov    eax,ebx
-     c10:	add    eax,ecx
-     c12:	sub    esp,0x4
-     c15:	push   edx
-     c16:	push   0x14
-     c18:	push   eax
-     c19:	call   c1a <add+0x90>
-     c1e:	add    esp,0x10
-     c21:	mov    edx,DWORD PTR ds:0x304c
-     c27:	mov    eax,DWORD PTR [ebp-0xc]
-     c2a:	shl    eax,0x2
-     c2d:	mov    ecx,eax
-     c2f:	shl    ecx,0x4
-     c32:	sub    ecx,eax
-     c34:	mov    eax,ecx
-     c36:	lea    ebx,[edx+eax*1]
-     c39:	mov    edx,DWORD PTR ds:0x304c
-     c3f:	mov    eax,DWORD PTR [ebp-0xc]
-     c42:	shl    eax,0x2
-     c45:	mov    ecx,eax
-     c47:	shl    ecx,0x4
-     c4a:	sub    ecx,eax
-     c4c:	mov    eax,ecx
-     c4e:	add    eax,edx
-     c50:	sub    esp,0xc
-     c53:	push   eax
-     c54:	call   c55 <add+0xcb>
-     c59:	add    esp,0x10
-     c5c:	sub    eax,0x1
-     c5f:	mov    BYTE PTR [ebx+eax*1],0x0
-     c63:	mov    edx,DWORD PTR ds:0x304c
-     c69:	mov    eax,DWORD PTR [ebp-0xc]
-     c6c:	shl    eax,0x2
-     c6f:	mov    ecx,eax
-     c71:	shl    ecx,0x4
-     c74:	sub    ecx,eax
-     c76:	mov    eax,ecx
-     c78:	add    eax,edx
-     c7a:	mov    DWORD PTR [eax+0x38],0x1
-     c81:	nop
-     c82:	mov    ebx,DWORD PTR [ebp-0x4]
-     c85:	leave  
-     c86:	ret    
+	if(var1 == 0x10){
+		printf("Full item!");
+		exit(0x0);
+	}
+	printf("Input item name\n>> ");
+	fgets(data_304c[var1*60],0x14,data_0000);
+	data_304c[var1*60 + strlen(data_304c[var1*60]) - 1] = '\0';
+	data_304c[var1*60]->0x38 = 0x1;
+}
 
 00000c87 <comment>://TODO checking buf length and data_0000 is what.
 	stack:= 0x38
@@ -416,38 +338,6 @@ sub_e84_del(void){
 	}
 	return;
 }
-     eba:	mov    edx,DWORD PTR ds:0x304c
-     ec0:	mov    eax,DWORD PTR [ebp-0xc]
-     ec3:	shl    eax,0x2
-     ec6:	mov    ecx,eax
-     ec8:	shl    ecx,0x4
-     ecb:	sub    ecx,eax
-     ecd:	mov    eax,ecx
-     ecf:	add    eax,edx
-     ed1:	mov    eax,DWORD PTR [eax+0x38]
-     ed4:	cmp    eax,0x1
-     ed7:	jne    f02 <del+0x7e>
-     ed9:	mov    edx,DWORD PTR ds:0x304c
-     edf:	mov    eax,DWORD PTR [ebp-0xc]
-     ee2:	shl    eax,0x2
-     ee5:	mov    ecx,eax
-     ee7:	shl    ecx,0x4
-     eea:	sub    ecx,eax
-     eec:	mov    eax,ecx
-     eee:	add    eax,edx
-     ef0:	sub    esp,0x4
-     ef3:	push   0x3c
-     ef5:	push   0x0
-     ef7:	push   eax
-     ef8:	call   ef9 <del+0x75>
-     efd:	add    esp,0x10
-     f00:	jmp    f12 <del+0x8e>
-     f02:	sub    esp,0xc
-     f05:	push   0x10c2
-     f0a:	call   f0b <del+0x87>
-     f0f:	add    esp,0x10
-     f12:	leave  
-     f13:	ret    
 
 00000f14 <main>:
 	puts("+---------------------+");
