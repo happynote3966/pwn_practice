@@ -46,5 +46,21 @@ input_byte_by_byte
 
 ## find vuln
 
+This binary services sending payload.
+
+You can select 3, and send len and payload to ebp.
+
+|ebp           |<  function 3, sending payload here
+|return address|
+
+You can overwrite Return Address
+
 ## exploit
 
+OK
+
+There are 2 way.
+
+First, set binsh string to rdi register,and call system
+
+Second, find One-Gadget-RCE.
