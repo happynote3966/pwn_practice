@@ -12,4 +12,7 @@ sudo cp ../tools/rp-lin-x64 /usr/local/bin
 git clone https://github.com/longld/peda.git ~/peda
 echo "source ~/peda/peda.py" >> ~/.gdbinit
 
-../tools/idafree70_linux_run
+wget https://out7.hex-rays.com/files/idafree70_linux.run
+chmod +x idafree70_linux.run
+./idafree70_linux_run
+rm idafree70_linux.run
